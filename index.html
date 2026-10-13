@@ -52,11 +52,26 @@ header.site{display:flex; align-items:center; gap:10px; padding:4px 2px 18px}
   background:var(--yellow); color:var(--yellow-ink);
   font:inherit; font-weight:800; font-size:1.15rem;
   padding:18px; border-radius:12px; position:relative;
+  box-shadow:0 4px 16px rgba(255,180,0,.45);
+  letter-spacing:.01em;
 }
 .btn-report::before{
   content:""; position:absolute; top:0; left:0; right:0; height:7px;
   border-radius:12px 12px 0 0;
   background:repeating-linear-gradient(45deg,#22221C 0 10px,var(--yellow) 10px 20px);
+}
+.cta-wrap{position:relative; display:flex; align-items:center; gap:10px}
+.cta-wrap .btn-report{flex:1}
+.cta-hint{
+  flex:none; font-size:.85rem; font-weight:800; color:var(--yellow);
+  white-space:nowrap; animation:nudge 1.2s ease-in-out infinite;
+  text-shadow:0 1px 4px rgba(0,0,0,.4);
+}
+@media (prefers-reduced-motion:no-preference){
+  @keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(-5px)}}
+}
+@media (prefers-reduced-motion:reduce){
+  .cta-hint{animation:none}
 }
 .btn-report:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--yellow); outline-offset:2px}
 .stats{display:flex; gap:0; border-top:1px solid var(--line)}
@@ -163,7 +178,10 @@ footer.site{margin-top:34px; text-align:center; font-size:.74rem; color:var(--mu
     <div class="hero">
       <h2>See a pothole?<br>Report it in 60 seconds.</h2>
       <p>Take a photo, tell us where it is, and we'll send a crew. You can track the fix the whole way.</p>
-      <button class="btn-report" id="openBtn">Report a pothole</button>
+      <div class="cta-wrap">
+        <button class="btn-report" id="openBtn">Report a pothole</button>
+        <span class="cta-hint" aria-hidden="true">← Click here</span>
+      </div>
     </div>
     <div class="stats" aria-label="This month">
       <div><strong>1,284</strong><span>fixed this month</span></div>

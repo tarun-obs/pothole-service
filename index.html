@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Egoli Metro - Roads Department - Road Defect Reporting Portal</title>
+<style>
+  body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#fff;color:#222;font-size:14px}
+  .top{background:#1a3d6d;color:#fff;padding:14px 18px}
+  .top h1{font-size:17px;margin:0}
+  .top p{margin:2px 0 0;font-size:11px;color:#c9d6e8}
+  .crumbs{background:#eef1f5;padding:8px 18px;font-size:11px;color:#555}
+  .page{max-width:860px;margin:0 auto;padding:18px}
+  h2{font-size:16px;color:#1a3d6d;border-bottom:2px solid #1a3d6d;padding-bottom:6px}
+  .notice{border:1px solid #d8b23a;background:#fdf6dd;padding:10px 12px;font-size:12px;margin:12px 0}
+  p.legal{font-size:12px;color:#444;line-height:1.7;text-align:justify}
+  table.req{border-collapse:collapse;width:100%;font-size:12px;margin:12px 0}
+  table.req td,table.req th{border:1px solid #ccc;padding:6px 8px;text-align:left}
+  fieldset{border:1px solid #bbb;margin:16px 0;padding:12px}
+  legend{font-size:12px;font-weight:bold;color:#1a3d6d}
+  label{display:block;font-size:12px;margin:10px 0 3px}
+  input[type=text],select,textarea{width:260px;padding:4px;font-size:12px;border:1px solid #999}
+  textarea{width:420px;height:70px}
+  .upload-row{margin:10px 0}
+  .err{color:#b00020;font-size:11px;display:none;margin-top:4px}
+  .btn{background:#e4e4e4;border:1px solid #999;padding:5px 14px;font-size:12px;cursor:pointer}
+  .footer{background:#eef1f5;margin-top:30px;padding:14px 18px;font-size:10px;color:#666}
+</style>
+</head>
+<body>
+<div class="top">
+  <h1>EGOLI METROPOLITAN MUNICIPALITY</h1>
+  <p>Department of Roads, Stormwater and Transport Infrastructure | Online Services Portal v1.3.2</p>
+</div>
+<div class="crumbs">Home &gt; Online Services &gt; Roads and Stormwater &gt; Defect Enquiries &gt; Form RD-7</div>
+<div class="page">
+  <h2>Road Defect Reporting Portal (Form RD-7)</h2>
+
+  <div class="notice"><b>NOTICE:</b> Scheduled maintenance every Wednesday 22:00-02:00. The portal may be unavailable. Enquiries lodged during this window must be re-submitted.</div>
+
+  <p class="legal">In terms of the Municipal Systems Act 32 of 2000 read together with the Roads and Stormwater By-laws (2014, as amended), members of the public may lodge an enquiry pertaining to a road surface defect ("pothole") within the municipal jurisdiction. Please note that the lodging of an enquiry does not constitute an undertaking by the Municipality to effect repairs within any specific timeframe. Enquiries are assessed in accordance with the Departmental Prioritisation Framework (DPF-2019) and attended to subject to budgetary availability and seasonal maintenance schedules.</p>
+
+  <p class="legal">Before proceeding, kindly ensure that you have the following information at hand, failing which your enquiry may be rejected: (a) the full street name and suburb; (b) the nearest cross street or intersection; (c) the applicable ward number (consult the Ward Lookup Register, available at any municipal customer care centre during office hours, Monday to Friday 08:00 to 15:30); (d) a photograph of the defect not exceeding 500KB in JPEG format; (e) your South African identity number or passport number for verification purposes.</p>
+
+  <h2>Frequently Asked Questions</h2>
+  <table class="req">
+    <tr><th>Question</th><th>Answer</th></tr>
+    <tr><td>How long will the repair take?</td><td>Refer to the Departmental Prioritisation Framework (DPF-2019).</td></tr>
+    <tr><td>Can I follow up on my enquiry?</td><td>Yes, telephonically during office hours. Have your 16-digit enquiry number ready.</td></tr>
+    <tr><td>Can I report on behalf of another person?</td><td>Only with a certified affidavit (Form RD-7A).</td></tr>
+  </table>
+
+  <fieldset>
+    <legend>Section A: Enquirer Particulars</legend>
+    <label>Full names and surname *</label><input type="text">
+    <label>SA identity number / passport number *</label><input type="text">
+    <label>Daytime telephone number *</label><input type="text">
+  </fieldset>
+
+  <fieldset>
+    <legend>Section B: Defect Particulars</legend>
+    <label>Street name *</label><input type="text">
+    <label>Ward number (consult Ward Lookup Register) *</label><select><option>-- select --</option><option>Unknown</option></select>
+    <label>Description of defect (max 200 characters) *</label><textarea></textarea>
+    <div class="upload-row">
+      <label>Photograph of defect (JPEG, max 500KB) *</label>
+      <input type="file" id="photo" accept="image/jpeg">
+      <div class="err" id="uploadErr">ERR_UPLOAD_413: File upload failed. Please try again from a desktop computer.</div>
+    </div>
+  </fieldset>
+
+  <p class="legal">By submitting this form you consent to the processing of your personal information in terms of the Protection of Personal Information Act 4 of 2013 for purposes of enquiry management, and you confirm that the particulars furnished are true and correct. Submission of false particulars constitutes an offence.</p>
+
+  <button class="btn" onclick="document.getElementById('subErr').style.display='block'">Submit enquiry (Form RD-7)</button>
+  <div class="err" id="subErr">Session expired. Please complete all sections again.</div>
+</div>
+<div class="footer">
+  &copy; Egoli Metropolitan Municipality. Best viewed in Internet Explorer 9 or higher at 1024x768 resolution.<br>
+  Webmaster: roads.webmaster@egolimetro.gov.za | Last updated: 11 March 2021
+</div>
+<script>
+  // Mobile photo upload is broken by design for the demo
+  document.getElementById('photo').addEventListener('change', function(){
+    document.getElementById('uploadErr').style.display='block';
+    this.value='';
+  });
+</script>
+</body>
+</html>
